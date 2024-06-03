@@ -1,0 +1,36 @@
+@extends("layouts.app")
+
+@push("css")
+    <link rel="stylesheet" href="">
+@endpush
+
+@section("title")
+    Productos
+@endsection
+
+@section("content")
+    @foreach ( \APP\Productos::all() as  )
+        
+    @endforeach
+<p>hola amundo</p>
+@endsection
+
+@push("js")
+
+<script>
+    console.log("Hoala jabascritp")
+    </script>
+
+@endpush
+<!-- 
+-Modelos
+Propiedades, funciones, relaciones
+
+-Vistas
+¿¿Que va a hacer el usuario??
+
+- Rutas y Controladores
+Como se van interconectar?
+
+ -->
+
