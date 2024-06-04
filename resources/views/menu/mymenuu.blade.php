@@ -33,40 +33,46 @@
     </li>
   @endforeach
 
-  <li class="nav-item dropdown">
+ 
+
+  @if (Auth::check())
+    <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img
-        src="{{ Voyager::image(Auth::user()->avatar) }}" class="dropdown-avatar"
-        alt="{{ Auth::user()->name }} avatar"></a>
+      src="{{ Voyager::image(Auth::user()->avatar) }}" class="dropdown-avatar"
+      alt="{{ Auth::user()->name }} avatar"></a>
     <ul class="dropdown-menu">
       <li class="dropdown-item profile">
-        <img src="{{ Voyager::image(Auth::user()->avatar) }}" class="avatar" alt="{{ Auth::user()->name }} avatar">
-        <div class="profile-body">
-          <h6><strong>Hola, {{ Auth::user()->name }}</strong></h6>
-          <h6>{{ Auth::user()->email }}</h6>
-        </div>
+      <img src="{{ Voyager::image(Auth::user()->avatar) }}" class="avatar" alt="{{ Auth::user()->name }} avatar">
+      <div class="profile-body">
+        <h6><strong>Hola, {{ Auth::user()->name }}</strong></h6>
+        <h6>{{ Auth::user()->email }}</h6>
+      </div>
       </li>
       <li>
-        <hr class="dropdown-divider">
+      <hr class="dropdown-divider">
       </li>
       <li><a class="dropdown-item" href="{{ route('usuarios.show', Auth::user()->id) }}">Mi Perfil</a></li>
       <li><a href="{{ route('intereses') }}" class="dropdown-item">Mis Intereses</a></li>
       <li><a class="dropdown-item p-0" href="#">
-          <form action="{{ route('logout') }}" method="POST">
-            {{ csrf_field() }}
-            <button type="submit" class="btn btn-danger custom-button">Cerrar sesión</button>
-          </form>
-        </a></li>
+        <form action="{{ route('logout') }}" method="POST">
+        {{ csrf_field() }}
+        <button type="submit" class="btn btn-danger custom-button">Cerrar sesión</button>
+        </form>
+      </a></li>
     </ul>
-
-  </li>
+    </li>
+  @else
+    <li class="nav-item login">
+    <a class="nav-link" href="{{ route('login') }}">Iniciar sesión</a>
+    </li>
+  @endif
 </ul>
 
 <style>
-
-    .dropdown-item{
-      margin-top: 5px;
-      border-radius: 0.375rem;
-    }
+  .dropdown-item {
+    margin-top: 5px;
+    border-radius: 0.375rem;
+  }
 
   .dropdown-item:hover,
   .dropdown-item:active {
@@ -123,7 +129,7 @@
     align-items: center;
     /* Alinea los hijos verticalmente */
   }
-
+  .nav-item.login,
   .nav-item.dropdown {
     position: absolute;
     right: 10px;
@@ -144,17 +150,18 @@
     height: 25px;
   }
 
-  .dropdown-menu{
+  .dropdown-menu {
     padding-left: 8px;
     padding-right: 8px;
   }
+
   .dropdown-menu a {
     font-size: 17px;
   }
 
   .custom-button {
     width: 210px;
-  
+
   }
 
   .dropdown-item.profile img {
