@@ -75,8 +75,8 @@ Publicaciones
                                             <textarea name="descripcion" class="form-control" required></textarea>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="categoria_id">Categoría</label>
-                                            <select name="categoria_id" id="categoria_id" class="form-control" required>
+                                            <label for="categoria">Categoría</label>
+                                            <select name="categoria" id="categoria" class="form-control" required>
                                                 @foreach($categorias as $categoria)
                                                     <option value="{{ $categoria->id }}">{{ $categoria->name }}</option>
                                                 @endforeach

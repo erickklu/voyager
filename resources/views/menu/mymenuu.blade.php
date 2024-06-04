@@ -5,7 +5,7 @@
 <ul class="nav justify-content-center nav-underline">
   <li class="nav-item logo d-flex align-items-center">
     <?php $admin_logo_img = Voyager::setting('admin.icon_image', ''); ?>
-    <img style="width: 40px; height: 40px; margin-right: 10px;" src="{{ Voyager::image($admin_logo_img) }}"
+    <img style="width: 40px; height: 40px; margin-right: 10px; border-radius:0.375rem;" src="{{ Voyager::image($admin_logo_img) }}"
       alt="Logo Icon">
     <h3 style="margin: 0; color: black;">EcoLoop</h3>
   </li>
@@ -63,12 +63,23 @@
     </li>
   @else
     <li class="nav-item login">
-    <a class="nav-link" href="{{ route('login') }}">Iniciar sesión</a>
+    <a class="btn btn-custom login" href="{{ route('login') }}">Iniciar sesión</a>
     </li>
   @endif
 </ul>
 
 <style>
+  .btn-custom.login:hover{
+    background-color: #021021;
+    
+  }
+  .btn-custom.login{
+    background-color: #052954;
+    color: white;
+    font-size: 15px !important;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
   .dropdown-item {
     margin-top: 5px;
     border-radius: 0.375rem;
@@ -76,8 +87,9 @@
 
   .dropdown-item:hover,
   .dropdown-item:active {
-    background-color: #698D43;
-    color: white;
+    /* background-color: #698D43; */
+    background-color:#f0f2f5;
+    color: black;
   }
 
 
@@ -142,14 +154,12 @@
 
   .dropdown-avatar {
     border-radius: 50%;
-    /* height: 30px; */
     margin-right: 5px;
-    /* width: 30px */
-
     object-fit: cover;
     height: 25px;
+    width: 25px;
   }
-
+/* height: 30px;width: 30px */
   .dropdown-menu {
     padding-left: 8px;
     padding-right: 8px;
@@ -164,6 +174,13 @@
 
   }
 
+
+  .dropdown-item.profile{
+    padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
   .dropdown-item.profile img {
     border-radius: 50%;
     float: left;
@@ -179,6 +196,7 @@
   .profile-body h6 {
     font-weight: normal;
     font-size: 13px;
+    margin-bottom: 5px;
   }
 
   .nav-item.logo img {
