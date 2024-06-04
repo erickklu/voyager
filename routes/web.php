@@ -20,11 +20,9 @@ use TCG\Voyager\Facades\Voyager;
 */
 
 
-
+Route::get('/', function () {return view('home');});
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/', function () {
-        return view('home');
-    });
+    
     Route::get('/publicaciones', [PublicacionesController::class, 'index'])->name('publicaciones');
     Route::get('/publicaciones/create', [PublicacionesController::class, 'create'])->name('publicaciones.create');
     Route::post('/publicaciones', [PublicacionesController::class, 'store'])->name('publicaciones.store');
